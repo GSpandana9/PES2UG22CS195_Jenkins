@@ -25,7 +25,7 @@ pipeline {
                 sh '''
                 git config --global user.email "spandanag31@gmail.com"
                 git config --global user.name "GSpandana9"
-                git add main.cpp
+                git add 195.cpp
                 git commit -m "Added new working .cpp file"
                 git push origin main
                 '''
