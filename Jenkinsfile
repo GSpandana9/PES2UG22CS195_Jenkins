@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/<user>/<repo>.git'
+                git branch: 'main', url: 'https://github.com/GSpandana9/PES2UG22CS195_Jenkins'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'g++ main.cpp -o PES2UG22CS195-1'
+                sh 'g++ 195.cpp -o PES2UG22CS195-1'
             }
         }
 
@@ -23,8 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                git config --global user.email "your-email@example.com"
-                git config --global user.name "your-username"
+                git config --global user.email "spandanag31@gmail.com"
+                git config --global user.name "GSpandana9"
                 git add main.cpp
                 git commit -m "Added new working .cpp file"
                 git push origin main
