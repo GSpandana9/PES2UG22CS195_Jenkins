@@ -2,40 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/GSpandana9/PES2UG22CS195_Jenkins'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'g++ 195.cpp -o PES2UG22CS195-1'
+                script {
+                    sh 'g++ -o output 195.cpp'  // Compile the C++ file
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh './PES2UG22CS195-1'
+                script {
+                    sh './output'  // Run the compiled C++ program
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
-                git config --global user.email "spandanag31@gmail.com"
-                git config --global user.name "GSpandana9"
-                git add 195.cpp
-                git commit -m "Added new working .cpp file"
-                git push origin main
-                '''
+                echo 'Deploying application...'
             }
         }
     }
 
     post {
         failure {
-            echo "Pipeline failed"
+            echo 'Pipeline failed'
         }
     }
 }
